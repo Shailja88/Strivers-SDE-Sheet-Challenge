@@ -1,3 +1,4 @@
+//codestudio
 #include <bits/stdc++.h> 
 vector<int> nextPermutation(vector<int> &A, int n)
 {
@@ -24,3 +25,33 @@ vector<int> nextPermutation(vector<int> &A, int n)
     reverse(A.begin()+ind+1,A.end());
     return A;
 }
+
+//leetcode
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int x=nums.size();
+        int mark=-1;
+        for(int i=x-2;i>=0;i--){
+            if(nums[i+1]>nums[i]){
+             mark=i;
+             break;
+            }
+        }
+        if(mark==-1){
+            reverse(nums.begin(),nums.end());
+            return;
+        }
+        for(int i=x-1;i>mark;i--){
+            if(nums[i] > nums[mark]){
+                int temp=nums[i];
+                nums[i]=nums[mark];
+                nums[mark]=temp;
+                break;
+            }
+        }
+        
+        reverse(nums.begin()+mark+1,nums.end());
+        return;
+    }
+};
