@@ -66,3 +66,20 @@ LINKED LIST CYCLE METHOD
 
 TORTOISE METHOD 
 */
+#include <bits/stdc++.h>
+
+int findDuplicate(vector<int> &arr, int n){
+	// Optimal Solution : : TC=O(n);SC=O(1);  : : 
+   int slow=arr[0];
+   int fast=arr[0];
+   do{
+	   slow=arr[slow];//one step 
+	   fast=arr[arr[fast]];//two steps
+   }while(slow!=fast);
+   fast=arr[0];
+   while(slow!=fast){
+	   slow=arr[slow];
+	   fast=arr[fast];
+	   }
+	   return slow;
+}
