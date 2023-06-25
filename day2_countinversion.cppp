@@ -1,0 +1,73 @@
+//brute force 
+/*TC=O(n^2)
+  SC=O(1)
+  */
+#include <bits/stdc++.h> 
+long long getInversions(long long *arr, int n){
+    // Write your code here.
+    long long  count=0;
+    for(long long i=0;i<n-1;i++){
+       for(long long j=i+1;j<n;j++){
+           if(arr[i]>arr[j])count++;
+       }
+    }
+    return count;
+}
+
+
+
+/*OPTIMAL APPROACH
+using merge sort technique
+
+TC=O(nlogn);
+SC=O(n)//for temporary array 
+ALERT* distorting the array to get the answer
+*/
+
+#include <bits/stdc++.h> 
+// long long cnt=0;
+long long  merge(long long *v,int l,int m,int h){
+    int left=l;
+    int right=m+1;
+    long long cnt=0;
+    vector<int>temp;
+    while(left<=m && right<=h){
+        if(v[left]>v[right])
+        {
+            temp.push_back(v[right]);
+            cnt+=(m-left+1);//////imp line apart from merge sort
+          
+           right++;
+        }
+        else{
+            temp.push_back(v[left]);
+            left++;
+        }
+    }
+    while(left<=m){
+        temp.push_back(v[left]);
+            left++;
+    }
+    while(right<=h){
+        temp.push_back(v[right]);
+           right++;
+    }
+    for(int i=l;i<=h;i++){
+        v[i]=temp[i-l];
+
+    }
+return cnt;
+}
+long long mS(long long *v,int l,int h){
+    long long cnt=0;
+    if(l>=h)return cnt ;
+    int mid=(l+h)/2;
+    cnt+=mS(v,l,mid);
+    cnt+=mS(v,mid+1,h);
+   cnt+= merge(v,l,mid,h);
+   return cnt;
+}
+long long getInversions(long long *arr, int n){
+         return mS(arr,0,n-1);
+         
+}
