@@ -1,4 +1,7 @@
 //{ Driver Code Starts
+/*TC=O(2^nlogn +2^n)
+   SC=O(2^N)
+   */
 #include<bits/stdc++.h> 
 using namespace std; 
 
