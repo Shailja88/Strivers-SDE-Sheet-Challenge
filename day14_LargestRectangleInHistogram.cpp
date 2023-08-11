@@ -68,7 +68,7 @@ for(int i=0;i<n;i++){
    return ans;
  }
 
-*/
+
 /*Best Approach
 Optimal approach but with single pass
 TC=O(2n)
