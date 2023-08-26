@@ -1,1 +1,20 @@
 # Strivers-SDE-Sheet-Challenge
+Covered topics
+ARRAY
+LINKED LIST
+GREEDY ALGORITHM
+RECURSION AND BACKTRACKING
+HEAPS
+STACK AND QUEUE
+STRING
+
+In process
+TREE
+
+To Do
+GRAPH
+DP 
+TRIE
+
+
+
