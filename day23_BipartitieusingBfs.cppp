@@ -1,0 +1,43 @@
+// tc=o(v+2e)
+//sc=o(3v)
+
+class Solution {
+public:
+bool check(int start,int color[],vector<vector<int>>&adj){
+    color[start]=0;
+    queue<int>q;
+    q.push(start);
+    while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        for(auto in:adj[node]){
+            if(color[in]==-1){
+                color[in]=!color[node];
+                q.push(in);
+            }
+            else if(color[in]==color[node]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+    bool isBipartite(vector<vector<int>>& adj) {
+     /*       using bfs 
+               queue
+              condition for bipartite: all the adjacent are colored with different colors 
+*/
+       int v=adj.size();
+       int color[v];
+       for(int i=0;i<v;i++){
+       color[i]=-1;//all the nodes have given color -1;
+}
+   for(int i=0;i<v;i++){
+       if(color[i]==-1){
+          if( check(i,color,adj)==false)
+               return false;
+    }
+}
+return true;
+    }
+};
